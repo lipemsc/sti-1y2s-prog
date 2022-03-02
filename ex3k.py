@@ -1,3 +1,7 @@
+## 3) K - Fibonacci é até ao nºesimo termo, então talvez seja para imprimir
+## n numeros em vez de parar so quando for maior do que o n
+
+
 op = int(input("Insira um numero: "))
 
 n1 = 0
