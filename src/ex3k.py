@@ -7,9 +7,14 @@ op = int(input("Insira um numero: "))
 n1 = 0
 n2 = 1
 n = 0
-while n < op:
+count = 2
+print(n1)
+print(n2)
+
+while count < op:
     n = n2 + n1
     print(n)
     n1 = n2
     n2 = n
+    count += 1
 
