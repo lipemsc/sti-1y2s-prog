@@ -13,6 +13,7 @@ class Person:
     @forename.setter
     def forename(self, forename):
         self._forename = forename
+
     
     @property
     def surname(self):
@@ -22,6 +23,7 @@ class Person:
     def surname(self, surname):
         self._surname = surname
 
+
     @property
     def address(self):
         return self._address
@@ -30,6 +32,7 @@ class Person:
     def address(self, address):
         self._address = address
 
+
     @property
     def CC(self):
         return self._CC
@@ -37,6 +40,7 @@ class Person:
     @CC.setter
     def CC(self, CC):
         self._CC = CC
+
 
     @property
     def phonenumber(self):

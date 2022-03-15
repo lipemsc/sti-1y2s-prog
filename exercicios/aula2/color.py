@@ -12,6 +12,7 @@ class Color:
     def r(self, r):
         self._r = r
 
+
     @property
     def g(self):
         return self._g
@@ -20,6 +21,7 @@ class Color:
     def g(self, g):
         self._g = g
 
+
     @property
     def b(self):
         return self._b
@@ -27,6 +29,7 @@ class Color:
     @b.setter
     def b(self, b):
         self._b = b
+
 
     @property
     def rgb(self):
@@ -37,7 +40,8 @@ class Color:
         self._r = r
         self._g = g
         self._b = b
-    
+
+
     @property
     def colorname(self):
         raise NotImplementedError()
@@ -45,8 +49,8 @@ class Color:
     @colorname.setter
     def colorname(self, r, g, b):
         raise NotImplementedError()
-    
 
+    
 cor = Color(1,1,1)
 
 print(cor.rgb)

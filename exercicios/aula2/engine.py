@@ -18,6 +18,8 @@ class Engine:
     @fuel.setter
     def fuel(self, fuel):
         self._fuel = fuel
+
+    
     @property
     def horsepower(self):
         return self._horsepower
@@ -25,6 +27,8 @@ class Engine:
     @horsepower.setter
     def horsepower(self, horsepower):
         self._horsepower = horsepower
+
+
     @property
     def torque(self):
         return self._torque
@@ -32,6 +36,8 @@ class Engine:
     @torque.setter
     def torque(self, torque):
         self._torque = torque
+
+
     @property
     def displacement(self):
         return self._displacement
@@ -39,6 +45,8 @@ class Engine:
     @displacement.setter
     def displacement(self, displacement):
         self._displacement = displacement
+
+
     @property
     def numbercilinders(self):
         return self._numbercilinders
@@ -46,6 +54,8 @@ class Engine:
     @numbercilinders.setter
     def numbercilinders(self, numbercilinders):
         self._numbercilinders = numbercilinders
+
+
     @property
     def startingsystem(self):
         return self._startingsystem
@@ -53,6 +63,8 @@ class Engine:
     @startingsystem.setter
     def startingsystem(self, startingsystem):
         self._startingsystem = startingsystem
+
+
     @property
     def dryweight(self):
         return self._dryweight
@@ -60,6 +72,8 @@ class Engine:
     @dryweight.setter
     def dryweight(self, dryweight):
         self._dryweight = dryweight
+
+        
     @property
     def manufacturer(self):
         return self._manufacturer
