@@ -1,9 +1,19 @@
 class Color:
-    def __init__(self, r, g, b):
+    def __init__(self, colorname, r, g, b):
+        self._colorname = colorname
         self._r = r
         self._g = g
         self._b = b
 
+    @property
+    def colorname(self):
+        return self._colorname
+    
+    @colorname.setter
+    def r(self, colorname):
+        self._colorname = colorname
+
+    
     @property
     def r(self):
         return self._r
