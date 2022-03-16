@@ -3,12 +3,14 @@ def add_carro():
     model = input("Model")
     consumption = input("Consumption")
     kms = input("KM's")
+    return (brand, model, consumption, kms)
 
 def add_color():
     name = input("Name")
     r = input("R")
     g = input("G")
     b = input("B")
+    return (name, r, g, b)
 
 def add_person():
     forename = input("Forename")

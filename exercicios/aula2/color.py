@@ -5,6 +5,9 @@ class Color:
         self._g = g
         self._b = b
 
+    def __repr__(self):
+        return f"Color {self.colorname}\nR:{self.r}\nG:{self.g}\nB:{self.b}"
+
     @property
     def colorname(self):
         return self._colorname
@@ -52,15 +55,8 @@ class Color:
         self._b = b
 
 
-    @property
-    def colorname(self):
-        raise NotImplementedError()
-    
-    @colorname.setter
-    def colorname(self, r, g, b):
-        raise NotImplementedError()
 
     
-cor = Color(1,1,1)
+#cor = Color(1,1,1)
 
-print(cor.rgb)
+#print(cor.rgb)

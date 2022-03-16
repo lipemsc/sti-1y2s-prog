@@ -1,7 +1,9 @@
 from color import Color
+from person import Person
+
 
 class Car:
-    def __init__(self, brand, model, consumption, kms, owner, color: Color):
+    def __init__(self, brand, model, consumption, kms, owner: Person, color: Color):
         self._brand = brand
         self._model = model
         self._consumption = consumption
