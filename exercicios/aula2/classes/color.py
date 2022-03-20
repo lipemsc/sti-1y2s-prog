@@ -6,7 +6,7 @@ class Color:
         self._b = b
 
     def __repr__(self):
-        return f"Color {self.colorname}\nR:{self.r}\nG:{self.g}\nB:{self.b}"
+        return f"Color {self.colorname}  R:{self.r} G:{self.g} B:{self.b}"
 
     @property
     def colorname(self):
