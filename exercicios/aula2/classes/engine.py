@@ -10,7 +10,19 @@ class Engine:
         self._startingsystem = startingsystem
         self._dryweight = dryweight
         self._manufacturer = manufacturer
-        
+
+    def __repr__(self):
+        return f"""Fuel: {self.fuel}
+Horsepower: {self.horsepower}
+Torque: {self.torque}
+Displacement: {self.displacement}
+Number of Cilinders: {self.numbercilinders}
+Starting System: {self.startingsystem}
+Dry Weight: {self.dryweight}
+Manufacturer: {self.manufacturer}
+"""
+
+
     @property
     def fuel(self):
         return self._fuel

@@ -6,6 +6,9 @@ class Person:
         self._CC = CC
         self._phonenumber = phonenumber
     
+    def __repr__(self):
+        return f"{self.forename} {self.surname}\nPhone: {self.phonenumber}\nCC: {self.CC}\nAddress:{self.address}"
+
     @property
     def forename(self):
         return self._forename

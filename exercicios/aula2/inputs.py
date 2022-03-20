@@ -18,10 +18,15 @@ def add_person():
     address = input("Address: ")
     cc = input("CC: ")
     phonenumber = input("Phone Number: ")
+    return (forename, surname, address, cc, phonenumber)
 
 def add_engine():
     fuel = input("Fuel: ")
     horsepower = input("Horsepower: ")
     torque = input("Torque: ")
     displacement = input("Displacement: ")
-    number = input("Phone Number: ")
+    numbercilinders = input("Number of Cilinders: ")
+    startingsystem = input("Starting System: ")
+    dryweight = input("Dry Weight: ")
+    manufacturer = input("Manufacturer: ")
+    return (fuel, horsepower, torque, displacement, numbercilinders, startingsystem, dryweight, manufacturer)
