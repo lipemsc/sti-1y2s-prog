@@ -1,4 +1,4 @@
-def print_main_menu():
+def main_menu():
     print(
 """     Cars      |      Engine       |      Person       |      Colors     
 -------------------------------------------------------------------------
