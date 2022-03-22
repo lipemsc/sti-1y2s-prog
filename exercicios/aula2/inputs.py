@@ -1,9 +1,12 @@
-def add_carro():
-    brand = input("Brand")
-    model = input("Model")
-    consumption = input("Consumption")
-    kms = input("KM's")
-    return (brand, model, consumption, kms)
+def add_car():
+    brand = input("Brand: ")
+    model = input("Model: ")
+    consumption = input("Consumption: ")
+    kms = input("KM's: ")
+    owner = int(input("Owner ID: "))
+    color = int(input("Color ID: "))
+    engine = int(input("Engine ID: "))
+    return (brand, model, consumption, kms, owner, color, engine)
 
 def add_color():
     name = input("Name: ")

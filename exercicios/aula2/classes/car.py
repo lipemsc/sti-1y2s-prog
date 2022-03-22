@@ -1,6 +1,6 @@
-from color import Color
-from person import Person
-from engine import Engine
+from classes.color import Color
+from classes.person import Person
+from classes.engine import Engine
 
 class Car:
     def __init__(self, brand, model, consumption, kms, owner: Person, color: Color, engine: Engine):
@@ -10,6 +10,15 @@ class Car:
         self._kms = kms
         self._owner = owner
         self._color = color
+        self._engine = engine
+
+    def __repr__(self):
+        return f"""{self.brand} {self.model}
+Consumption: {self.consumption}
+KM's: {self.kms}\n
+Owner:\n{self.owner}
+\nColor:\n{self.color}\n
+Engine:\n{self.engine}"""
 
     @property
     def brand(self):
@@ -52,7 +61,7 @@ class Car:
         return self._owner
 
     @owner.setter
-    def owner(self, owner):
+    def owner(self, owner: Person):
         self._owner = owner
 
 
@@ -69,7 +78,7 @@ class Car:
         return self._engine
 
     @engine.setter
-    def color(self, engine: Engine):
+    def engine(self, engine: Engine):
         self._engine = engine
 
     def addkms(self, kmstoadd):

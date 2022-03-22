@@ -1,16 +1,17 @@
-import sys
-sys.path.append("classes")
+#import sys
+#sys.path.append("classes")
 
 import prints
 import inputs
-import car
-import color
-import engine
-import person
+import classes.car as car
+import classes.color as color
+import classes.engine as engine
+import classes.person as person
 
 colors = []
 people = []
 engines = []
+cars = []
 
 while True:
     prints.main_menu()
@@ -44,4 +45,11 @@ while True:
     elif op == "de":
         del engines[int(input("Engine number to delete: "))-1]
     
-    
+    elif op == "ac":
+        inp = inputs.add_car()
+        cars.append(car.Car(inp[0], inp[1], inp[2],  inp[3], people[inp[4]-1], colors[inp[5]-1], engines[inp[6]-1]))
+    elif op == "lc":
+        for i in range(len(cars)):
+            print(f"{i+1}: {cars[i]}")
+    elif op == "dc":
+        del cars[int(input("Engine number to delete: "))-1]
