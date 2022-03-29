@@ -1,6 +1,3 @@
-from multiprocessing.sharedctypes import Value
-
-
 try:
     try:
         num1 = int(input("Insira o 1º número: "))
