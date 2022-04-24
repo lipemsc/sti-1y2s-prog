@@ -79,19 +79,32 @@ class Adamastor:
         result = self.cursor.fetchall()
         return result
 
-    #def ex21(self):
-    #    self.cursor.execute("""
-    #            SELECT encomendas.*
-    #            FROM
-    #                encomendas INNER JOIN clientes
-    #                    ON encomendas.CódigoDoCliente = clientes.CódigoDoCliente
-    #            WHERE
-    #                clientes.NomeDaEmpresa = 'Hanari Carnes' AND
-    #                encomendas.DataDaEncomenda = '1996-07-08'
+    def ex21(self):
+        query = ("""
+                INSERT INTO produtos(NomeDoProduto, Descontinuado)
+                VALUES (%s, %s)
+        """)
+        self.cursor.execute(query, ("Batata Doce", "0"))
+        self.connection.commit()
+        return self.cursor.rowcount
+        
+    def ex26(self):
+        self.cursor.execute("""
+                SELECT MIN(PreçoUnitário) as min
+                FROM
+                    produtos
+        """)
+        result = self.cursor.fetchall()
+        return result
 
-    #    """)
-    #    result = self.cursor.fetchall()
-    #    return result
+    def ex31(self):
+        self.cursor.execute("""
+                SELECT DISTINCT Cidade
+                FROM
+                    fornecedores
+        """)
+        result = self.cursor.fetchall()
+        return result
 
 adam = Adamastor(config)
 
@@ -112,4 +125,15 @@ adam = Adamastor(config)
 
 # ex15
 # print(tabulate(adam.ex15(), headers="keys", tablefmt="psql"))
+
+# ex21
+# print(f"{adam.ex21()} linhas inseridas")
+
+# ex26
+# print(adam.ex26()[0]["min"])
+
+# ex31
+ex31 = adam.ex31()
+for linha in ex31:
+    print(linha["Cidade"].upper())
 
