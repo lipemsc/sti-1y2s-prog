@@ -1,0 +1,30 @@
+#!/bin/python3
+
+import mysql.connector
+from pprint import pprint
+from tabulate import tabulate
+
+config = {
+    'host' : 'localhost',
+    'user' : 'root',
+    'password' : 'root',
+    'db' : 'adamastor' 
+}
+
+class Adamastor:
+    def __init__(self, config):
+        self.connection = mysql.connector.connect(**config)
+        self.cursor = self.connection.cursor(dictionary=True)
+
+    def listar_produtos(self):
+        self.cursor.execute("""
+                SELECT * 
+                FROM produtos
+                ORDER BY PreçoUnitário
+        """)
+        result = self.cursor.fetchall()
+        return result
+
+adam = Adamastor(config)
+
+print(tabulate(adam.listar_produtos(), headers="keys", tablefmt="psql"))
