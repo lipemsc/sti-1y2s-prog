@@ -106,6 +106,23 @@ class Adamastor:
         result = self.cursor.fetchall()
         return result
 
+    def ex34(self):
+        self.cursor.execute("""
+            SELECT id,MAX(soma) as soma
+            FROM (
+                SELECT
+            	    detalhes_da_encomenda.CódigoDaEncomenda as id, SUM(detalhes_da_encomenda.PreçoUnitário) as soma
+                FROM
+	                detalhes_da_encomenda
+                GROUP BY
+                	detalhes_da_encomenda.CódigoDaEncomenda)
+            AS encomenda
+        """)
+        result = self.cursor.fetchall()
+        return result
+    
+    
+
 adam = Adamastor(config)
 
 # ex1
@@ -133,7 +150,11 @@ adam = Adamastor(config)
 # print(adam.ex26()[0]["min"])
 
 # ex31
-ex31 = adam.ex31()
-for linha in ex31:
-    print(linha["Cidade"].upper())
+# ex31 = adam.ex31()
+# for linha in ex31:
+#    print(linha["Cidade"].upper())
+
+# ex34
+print("A encomenda com maior valor é a nº " + str(adam.ex34()[0]["id"]))
+
 
