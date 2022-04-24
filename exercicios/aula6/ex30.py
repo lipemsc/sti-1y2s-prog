@@ -108,19 +108,31 @@ class Adamastor:
 
     def ex34(self):
         self.cursor.execute("""
-            SELECT id,MAX(soma) as soma
-            FROM (
                 SELECT
-            	    detalhes_da_encomenda.CódigoDaEncomenda as id, SUM(detalhes_da_encomenda.PreçoUnitário) as soma
+        	        detalhes_da_encomenda.CódigoDaEncomenda as id, SUM(detalhes_da_encomenda.PreçoUnitário) as soma
                 FROM
-	                detalhes_da_encomenda
+                	detalhes_da_encomenda
                 GROUP BY
-                	detalhes_da_encomenda.CódigoDaEncomenda)
-            AS encomenda
+                	detalhes_da_encomenda.CódigoDaEncomenda
+                ORDER BY soma DESC
+                LIMIT 0,1
         """)
         result = self.cursor.fetchall()
         return result
     
+    def ex35(self):
+        self.cursor.execute("""
+                SELECT
+        	        detalhes_da_encomenda.CódigoDaEncomenda as id, COUNT(*) as soma
+                FROM
+                	detalhes_da_encomenda
+                GROUP BY
+                	detalhes_da_encomenda.CódigoDaEncomenda
+                ORDER BY soma DESC
+                LIMIT 0,1
+        """)
+        result = self.cursor.fetchall()
+        return result
     
 
 adam = Adamastor(config)
@@ -157,4 +169,6 @@ adam = Adamastor(config)
 # ex34
 print("A encomenda com maior valor é a nº " + str(adam.ex34()[0]["id"]))
 
+# ex35
+print("A encomenda com maior número de itens é a nº " + str(adam.ex35()[0]["id"]))
 
