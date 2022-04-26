@@ -1,6 +1,6 @@
 config = {
     'host' : 'localhost',
-    'user' : 'sensors',
-    'password' : '##sensors##',
-    'database' : 'sensors'
+    'user' : 'root',
+    'password' : 'root',
+    'database' : 'adamastor'
 }
