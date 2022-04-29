@@ -1,5 +1,4 @@
 # 4) h - Considere o vetor
-##### VERIFICAR MELHOR POR PLAGIO #####
 
 
 v = list ( range (50) )

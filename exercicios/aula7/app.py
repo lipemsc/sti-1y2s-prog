@@ -10,7 +10,7 @@ connector = mysql.connector.connect(
   database="sensors"
 )
 
-cursor = connector.cursor()
+cursor = connector.cursor(dictionary=True)
 
 app = flask.Flask(__name__)
 
@@ -20,7 +20,8 @@ def index(idsensor):
         cursor.execute("SELECT * FROM sensor WHERE idSensor=%s", (idsensor,) )
         result = cursor.fetchall()
         connector.commit()
-        return json.dumps(result)
+        
+        return flask.jsonify(result)
     else:
         return "fgkljsdfgkldfhlgjkdhljk"
 

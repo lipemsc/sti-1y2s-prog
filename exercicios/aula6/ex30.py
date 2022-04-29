@@ -109,7 +109,7 @@ class Adamastor:
     def ex34(self):
         self.cursor.execute("""
                 SELECT
-        	        detalhes_da_encomenda.CódigoDaEncomenda as id, SUM(detalhes_da_encomenda.PreçoUnitário) as soma
+        	        detalhes_da_encomenda.CódigoDaEncomenda as id, SUM(detalhes_da_encomenda.PreçoUnitário * Quantidade * (1-Desconto)) as soma
                 FROM
                 	detalhes_da_encomenda
                 GROUP BY
@@ -139,36 +139,46 @@ adam = Adamastor(config)
 
 # ex1
 # print(tabulate(adam.ex1(), headers="keys", tablefmt="psql"))
+# input()
 
-# ex3
+# # ex3
 # print(tabulate(adam.ex3(), headers="keys", tablefmt="psql"))
 
-# ex6
+# input()
+# # ex6
 # print(tabulate(adam.ex6(), headers="keys", tablefmt="psql"))
 
-# ex10
+# input()
+# # ex10
 # print(tabulate(adam.ex10(), headers="keys", tablefmt="psql"))
 
-# ex12
+# input()
+# # ex12
 # print(tabulate(adam.ex12(), headers="keys", tablefmt="psql"))
 
-# ex15
+# input()
+# # ex15
 # print(tabulate(adam.ex15(), headers="keys", tablefmt="psql"))
 
-# ex21
+# input()
+# # ex21
 # print(f"{adam.ex21()} linhas inseridas")
 
-# ex26
+# input()
+# # ex26
 # print(adam.ex26()[0]["min"])
 
-# ex31
+# input()
+# # ex31
 # ex31 = adam.ex31()
 # for linha in ex31:
-#    print(linha["Cidade"].upper())
+#         print(linha["Cidade"].upper())
 
-# ex34
+input()
+#ex34
 print("A encomenda com maior valor é a nº " + str(adam.ex34()[0]["id"]))
 
+input()
 # ex35
 print("A encomenda com maior número de itens é a nº " + str(adam.ex35()[0]["id"]))
 
