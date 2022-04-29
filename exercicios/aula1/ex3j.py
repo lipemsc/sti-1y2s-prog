@@ -8,5 +8,5 @@ for i in range(10):
         impares += 1
 
 
-print(pares)
-print(impares)
+print(f"Pares: {pares}")
+print(f"Impares: {impares}")
