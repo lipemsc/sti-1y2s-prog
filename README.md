@@ -4,6 +4,8 @@
 
 #### Aula 1
 
+##### parcialmente mostrado ao prof :white_check_mark:
+
 - [x] 1-f
 - [x] 1-h
 - [x] 1-i
@@ -15,7 +17,7 @@
 - [x] 3-j
 - [x] 3-k
 - [ ] 4-g
-- [x] 4-h
+- [ ] 4-h GANDA PLÁGIO IA SENDO APANHADO
 - [x] 6-a
 - [ ] 6-f 
 
@@ -39,16 +41,18 @@
 
 #### Aula 5
 
- - [x] 25
+ - [x] 25 -
 
 #### Aula 6
+
+##### parcialmente mostrado ao prof :white_check_mark:
  
  - [x] 30-i
  - [x] 30-iii
  - [x] 30-vi
  - [x] 30-x
  - [x] 30-xii
- - [x] 30-xv
+ - [ ] 30-xv (mal feito)
  - [x] 30-xxi
  - [x] 30-xxvi
  - [x] 30-xxxi
