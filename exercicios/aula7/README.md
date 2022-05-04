@@ -17,6 +17,12 @@ Usar:
  - DELETE para DELETE
  - GET para SELECT
 
-Extensão YARC no Chrome dá muito jeito.
+Extensão YARC no Chrome dá muito jeito. Mas está cheia de tracking.
+
+O seguinte faz o mesmo:
+
+    curl 127.0.0.1:8080/app -X POST -d '{"key":"value"}' -H "Content-Type: application/json"
 
 Dá (e devo) para usar diferentes rotas para diferentes `REQUEST METHODS`
+
+

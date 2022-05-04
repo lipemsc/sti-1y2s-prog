@@ -40,7 +40,8 @@ def delete(idsensor):
 @app.route('/app/', methods=["POST"])
 @app.route('/app', methods=["POST"])
 def add():
-    return flask.request.json
+    print(dict(flask.request.json))
+    return flask.request.json["aaa"]
 
     cursor.execute("INSERT INTO sensor WHERE idSensor=%s", (idsensor,) )
     deletedrows = cursor.rowcount
