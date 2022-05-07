@@ -39,18 +39,38 @@ def delete(idsensor):
 @app.route('/app/', methods=["POST"])
 @app.route('/app', methods=["POST"])
 def add():
-    print(dict(flask.request.json))
-    return flask.request.json["aaa"]
+    #print(dict(flask.request.json))
+    #return flask.request.json["aaa"]
 
-    cursor.execute("INSERT INTO sensor WHERE idSensor=%s", (idsensor,) )
-    deletedrows = cursor.rowcount
+    try:
+        cursor.execute(
+            """INSERT INTO sensor
+                (idLocation, name, unit)
+            VALUES
+                (%s, %s, %s)""",
+            (flask.request.json["idLocation"], flask.request.json["name"],flask.request.json["unit"]))
+
+    except:
+        return flask.jsonify({"sucess": False})
+
+    addedrows = cursor.rowcount
     connector.commit()
     
-    if deletedrows > 0:
+    if addedrows > 0:
         return flask.jsonify({"sucess": True})
     else:
         return flask.jsonify({"sucess": False})
 
+@app.route('/app/', methods=["GET"])
+@app.route('/app', methods=["GET"])
+def getall():
+    cursor.execute("SELECT * FROM sensor")
+    result = cursor.fetchall()
+    connector.commit()
+    try:
+        return flask.jsonify(result)
+    except IndexError:
+        return flask.jsonify({"sucess": False})
 
 if __name__ == '__main__':
     app.run(debug=True)
