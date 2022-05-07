@@ -3,7 +3,6 @@
 import flask
 import json
 import mysql.connector
-import mysql.connector
 
 connector = mysql.connector.connect(
   host="localhost",
