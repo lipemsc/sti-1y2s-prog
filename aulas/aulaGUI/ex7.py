@@ -8,6 +8,11 @@ from kivy.uix.spinner import Spinner
 from kivy.uix.button import Button
 
 
+pessoas = [
+            {"nome": "ze", "email": "ze@ualg.pt"},
+            {"nome": "quim", "email": "quim@ualg.pt"},
+        ]
+
 class MyScreen(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -49,18 +54,57 @@ class MyScreen(BoxLayout):
 
         self.bnovo = Button(text="Novo")
         grelhabotoes.add_widget(self.bnovo)
+        self.bnovo.bind(on_release=self.executa)
 
         self.bapagar = Button(text="Apagar")
         grelhabotoes.add_widget(self.bapagar)
+        self.bapagar.bind(on_release=self.executa)
 
         self.bgravar = Button(text="Gravar")
         grelhabotoes.add_widget(self.bgravar)
+        self.bgravar.bind(on_release=self.executa)
 
         self.banterior = Button(text="Anterior")
         grelhabotoes.add_widget(self.banterior)
+        self.banterior.bind(on_release=self.executa)
 
         self.bproximo = Button(text="Próximo")
         grelhabotoes.add_widget(self.bproximo)
+        self.bproximo.bind(on_release=self.executa)
+
+        self.idx = 0
+
+        self.preencherform()
+
+    def executa(self, instance):
+        if instance == self.bproximo:
+            self.idx = (self.idx + 1) % len(pessoas)
+        elif instance == self.banterior:
+            self.idx = (self.idx - 1) % len(pessoas)
+        elif instance == self.bnovo:
+            pessoas.append({"nome": "?", "email": "?"})
+            self.idx = -1
+        elif instance == self.bgravar:
+            pessoa = pessoas[self.idx]
+            pessoa["nome"] = self.txtnome.text
+            pessoa["email"] = self.txtemail.text
+        elif instance == self.bapagar:
+            del pessoas[self.idx]
+            self.idx = min(self.idx, len(pessoas) -1)
+        self.preencherform()
+
+#    def proximo(self, instance):
+#        self.idx = (self.idx + 1) % len(pessoas)
+#        self.preencherform()
+#
+#    def anterior(self, instance):
+#        self.idx = (self.idx - 1) % len(pessoas)
+#        self.preencherform()
+
+    def preencherform(self):
+        pessoa = pessoas[self.idx]
+        self.txtnome.text = pessoa["nome"]
+        self.txtemail.text = pessoa["email"]
 
 
 class MyApp(App):
