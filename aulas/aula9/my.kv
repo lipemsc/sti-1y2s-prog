@@ -1,0 +1,58 @@
+<Formulario>:
+    orientation: "vertical"
+    GridLayout:
+        cols: 2
+        #nome
+        Label:
+            text: "nome"
+        TextInput:
+        #email
+        Label:
+            text: "email"
+        TextInput:
+        #carro
+        Label:
+            text: "tem carro"
+        CheckBox:
+        #genero
+        Label:
+            text: "sexo"
+        GridLayout:
+            cols: 2
+            Label:
+                text: "masculino"
+            Label:
+                text: "feminino"
+            CheckBox:
+                group: "genero"
+            CheckBox:
+                group: "genero"
+        #pais
+        Label:
+            text: "pais"
+        Spinner:
+            text: "Pt"
+            values: ["PT","es","fr"]
+
+
+    BoxLayout:
+        orientation: "horizontal"
+
+        Button:
+            text: "novo"
+            on_release: root.clique("novo")
+        Button:
+            text: "Apaga"
+            on_release: root.clique("apaga")
+        Button:
+            text: "Grava"
+            on_release: root.clique("grava")
+        Button:
+            text: "Anterior"
+            on_release: root.clique("anterior")
+        Button:
+            text: "Proximo"
+            on_release: root.clique("proximo")
+    ProgressBar:
+        max:100
+        value:25
