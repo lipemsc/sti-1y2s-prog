@@ -50,8 +50,9 @@ def add():
                 (%s, %s, %s)""",
             (flask.request.json["idLocation"], flask.request.json["name"],flask.request.json["unit"]))
 
-    except:
-        return flask.jsonify({"sucess": False})
+    except Exception as error:
+        print(error)
+        return flask.jsonify({"sucess": False, "error_message": str(error)})
 
     addedrows = cursor.rowcount
     connector.commit()
