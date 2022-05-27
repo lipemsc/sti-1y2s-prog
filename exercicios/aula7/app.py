@@ -50,17 +50,56 @@ def add():
                 (%s, %s, %s)""",
             (flask.request.json["idLocation"], flask.request.json["name"],flask.request.json["unit"]))
 
+        addedrows = cursor.rowcount
+        connector.commit()
+
+        if addedrows > 0:
+            return flask.jsonify({"sucess": True})
+        else:
+            return flask.jsonify({"sucess": False})
+
     except Exception as error:
         print(error)
         return flask.jsonify({"sucess": False, "error_message": str(error)})
 
-    addedrows = cursor.rowcount
-    connector.commit()
-    
-    if addedrows > 0:
+@app.route('/app/<idsensor>', methods=["PUT"])
+def update(idsensor):
+    try:
+        query = """UPDATE sensor
+        SET """
+        updatevals = []
+        try:
+            updatevals.append(flask.request.json["idLocation"])
+            query += "idLocation = %s, "
+        except NameError:
+            pass
+
+        try:
+            updatevals.append(flask.request.json["name"])
+            query += "name = %s, "
+        except NameError:
+            pass
+
+        try:
+            updatevals.append(flask.request.json["unit"])
+            query += "unit = %s, "
+        except NameError:
+            pass
+
+        query = query[0:-2]
+        query += " WHERE idSensor=%s"
+        updatevals.append(idsensor)
+        result = cursor.execute(query, updatevals)
+
+        addedrows = cursor.rowcount
+        connector.commit()
+
         return flask.jsonify({"sucess": True})
-    else:
-        return flask.jsonify({"sucess": False})
+
+    except Exception as error:
+        print(error)
+        return flask.jsonify({"sucess": False, "error_message": str(error)})
+
 
 @app.route('/app/', methods=["GET"])
 @app.route('/app', methods=["GET"])
