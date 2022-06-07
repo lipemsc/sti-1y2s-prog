@@ -9,8 +9,6 @@ class BApp(App):
 class Layout(BoxLayout):
     def update_text(self):
         self.ids.textbox2.text = self.ids.textbox.text[::-1]
-        
-    pass
 
 
 BApp().run()
