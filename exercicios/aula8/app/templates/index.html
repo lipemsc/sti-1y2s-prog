@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Sensores</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .data {
+                display: inline-block;
+                overflow: hidden;
+            }
+
+            .row {
+                width: 100%;
+            }
+
+            .datarow:hover {
+                background-color: #dddddd;
+            }
+
+            body {
+                font-family: sans-serif;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Sensors</h1>
+        <div class="container">
+            <div class="row">
+                <div class="data" style="width: 3vw;">ID</div>
+                <div class="data" style="width: 20vw;">Nome</div>
+                <div class="data" style="width: auto;">Localização</div>
+                <div class="data" style="width: 20vw; float: right;">Unidade</div>
+            </div>
+        {% for row in data %}
+            <a href="id/{{ row["id"] }}">
+                <div class="row datarow">
+                    <div class="data" style="width: 3vw;">{{ row["id"] }}</div>
+                    <div class="data" style="width: 20vw;">{{ row["name"] }}</div>
+                    <div class="data" style="width: auto;">{{ row["loc"] }}</div>
+                    <div class="data" style="width: 20vw; float: right;">{{ row["unit"] }}</div>
+                </div>
+            </a>
+        {% endfor %}
+        </div>
+    </body>
+</html>
