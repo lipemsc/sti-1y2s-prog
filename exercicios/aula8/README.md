@@ -1,3 +1,8 @@
-# FAZER UMA PÁGINA WEB COM LISTAGEM
+### Ex 32 - d)
 
-## O PROF PERMITE FAZER COM QUE AO CLICAR NOS ID'S APRESENTAR INFO TODA TENHA A NOTA COMPLETA INDEPENDENTEMENTE DO ATRASO
+Considere a base de dados Sensores esquematizada na Figura 6.
+
+Implemente uma
+pequena aplicação para mostrar os dados presentes na tabela:
+
+- (d) Sensor.
