@@ -1,0 +1,23 @@
+<MyLayout>:
+    
+    orientation: "vertical"
+    
+    Label:
+        text: "Contador"
+    
+    TextInput:
+        text: "0"
+        id: tbox0
+
+    BoxLayout:
+        orientation: "horizontal"
+        CheckBox:
+            id: cbox0
+            active: "true"
+        Label:
+            text: "Reverse"
+    
+    Button:
+        text: "Trocar texto"
+        on_release: root.change_value()
+
