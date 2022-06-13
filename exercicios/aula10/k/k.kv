@@ -1,0 +1,22 @@
+<MyLayout>:
+    
+    orientation: "vertical"
+    
+    Label:
+        text: "Contador"
+        id: lbl0
+    
+    TextInput:
+        text: "0"
+        id: tbox0
+        disabled: "true"
+
+    TextInput:
+        text: "0"
+        id: tbox1
+    
+    Button:
+        text: "Tentar"
+        id: btn0
+        on_release: root.verify()
+
