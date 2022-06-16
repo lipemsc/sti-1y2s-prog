@@ -13,10 +13,27 @@ class Galo:
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._positions = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        self._player = 1
 
     @property
     def positions(self):
         return self._positions
+
+    @property
+    def player(self):
+        return self._player
+
+    @property
+    def winner(self):
+        try:
+            return self._winner
+        except AttributeError:
+            wnr = self.check_win()
+            if wnr != 0:
+                self._winner = wnr
+                return self._winner
+        return 0
+
 
     def draw_positions(self):
         print("| ", sep="", end="")
@@ -52,9 +69,10 @@ class Galo:
         else:
             return 0
 
-    def play(self, position, player):
-        if self._positions[position] == 0 and (player == 1 or player == 2):
-            self._positions[position] = player
+    def play(self, position):
+        if self._positions[position] == 0:
+            self._positions[position] = self.player
+            self._player = (self._player % 2) + 1
             return True
         else:
             return False

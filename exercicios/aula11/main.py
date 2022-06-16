@@ -23,6 +23,19 @@ class GaloLayout(BoxLayout):
             self.ids.gamegrid.add_widget(self.posbtns[i])
 
     def play(self, instance):
-        instance.text = "wow"
+        for btn_no in range(len(self.posbtns)): 
+            if instance == self.posbtns[btn_no]:
+                playno = btn_no
+        player = self.galo.player
+        #print(player)
+        if self.galo.play(playno):
+            if player == 1:
+                instance.text = "X"
+            elif player == 2:
+                instance.text = "O"
+        self.check_win()
+
+    def check_win(self):
+        print(self.galo.winner)
 
 GaloApp().run()
