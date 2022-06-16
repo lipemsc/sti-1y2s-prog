@@ -1,4 +1,4 @@
-### Exercicio 25
+### Exercício 25
 
 Programe a seguinte situação garantindo que todas as possíveis exceções são tratadas
 adequadamente. Por exemplo, se for pedido um nº e o utilizador falhar essa introdução o

@@ -1,4 +1,4 @@
-### Exercicio 30 - i), iii), vi), x), xii), xv), xxi), xxvi), xxxi), xxxiv), xxxv)
+### Exercício 30 - i), iii), vi), x), xii), xv), xxi), xxvi), xxxi), xxxiv), xxxv)
 
 Comece por restaurar a base de dados Adamastor num servidor MySQL. Observe a
 Figura 4 que apresenta o diagrama de entidade relacionamento da referida base de dados.

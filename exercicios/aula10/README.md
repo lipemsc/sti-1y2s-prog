@@ -1,5 +1,5 @@
 ## Aula 10
-### Exercicio 35 - b), c), e), i), k)
+### Exercício 35 - b), c), e), i), k)
 
 Criar um interface com as seguintes características:
 

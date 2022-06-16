@@ -1,4 +1,4 @@
-### Exercicio 18 - a), b), c), d), f), i), j)
+### Exercício 18 - a), b), c), d), f), i), j)
 
  - [ ] (a) Cria uma Classe `Pessoa`, contendo os atributos encapsulados, com seus respetivos seletores (*getters*) e modificadores (*setters*), e ainda o construtor padrão. Atributos: `nome`; `endereço`; `telefone`;
 
