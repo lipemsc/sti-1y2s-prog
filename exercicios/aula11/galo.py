@@ -28,7 +28,7 @@ class Galo:
         try:
             return self._winner
         except AttributeError:
-            wnr = self.check_win()
+            wnr = self._check_win()
             if wnr != 0:
                 self._winner = wnr
                 return self._winner
@@ -49,7 +49,7 @@ class Galo:
             print(" | ", sep="", end="")
         print("")
 
-    def check_win(self):
+    def _check_win(self):
         if self._positions[0] == self._positions[1] == self._positions[2] != 0:
             return self._positions[0]
         elif self._positions[3] == self._positions[4] == self._positions[5] != 0:
