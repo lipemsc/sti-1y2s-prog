@@ -22,7 +22,7 @@ def index():
                 INNER JOIN unit ON sensor.unit=unit.unit
         """)
     result = cursor.fetchall()
-    connector.commit()
+    #connector.commit()
     #return json.dumps(result)
     #print(result)
     return render_template('index.html', data=result)

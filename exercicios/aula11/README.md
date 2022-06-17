@@ -7,3 +7,8 @@ Implemente o jogo do galo (2 humanos) tendo em conta o seguinte:
 usar o exemplo na Figura 11.
 - o jogo é composto por um conjunto de partidas terminando quando um dos jogadores
 tiver ganho 3 partidas.
+
+## Nota prof.
+### É necessário icones e também tenho de ter em atenção à segunda parte do trabalho:
+
+>o jogo é composto por um conjunto de partidas terminando quando um dos jogadores tiver ganho 3 partidas.

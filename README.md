@@ -3,7 +3,6 @@
 ### Progresso
 
 #### Aula 1
-
 ##### parcialmente mostrado ao prof :white_check_mark:
 
 - [x] 1-f
@@ -39,12 +38,11 @@
 
  - [ ] 23
 
-#### Aula 5
+#### Aula 5 :white_check_mark:
 
- - [x] 25 -
+ - [x] 25
 
 #### Aula 6
-
 ##### parcialmente mostrado ao prof :white_check_mark:
  
  - [x] 30-i
@@ -59,19 +57,19 @@
  - [x] 30-xxxiv
  - [x] 30-xxxv
 
-#### Aula 7
+#### Aula 7 :white_check_mark:
 
  - [x] 31-d
 
-#### Aula 8
+#### Aula 8 :white_check_mark:
 
  - [x] 32-d
 
-#### Aula 9
+#### Aula 9 :white_check_mark:
 
  - [x] 34
 
-#### Aula 10
+#### Aula 10 :white_check_mark:
 
  - [x] 35-b
  - [x] 35-c
@@ -80,6 +78,7 @@
  - [x] 35-k
 
 #### Aula 11
+##### parcialmente mostrado ao prof :white_check_mark:
 
  - [x] 38
 
