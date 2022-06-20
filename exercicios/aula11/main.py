@@ -6,7 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.button import Label
-
+from kivy.uix.popup import Popup
 
 class GaloApp(App):
     def build(self):
@@ -15,7 +15,7 @@ class GaloApp(App):
 class GaloLayout(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.galo = Galo()
+        self.game = 0
         self.lbl0 = Label(text="Jogador 1")
         self.lbl1 = Label(text="Jogador 2")
         self.ids.bl0.add_widget(self.lbl0)
@@ -25,7 +25,12 @@ class GaloLayout(BoxLayout):
             self.posbtns.append(Button())
             self.posbtns[i].bind(on_release=self.play)
             self.ids.gamegrid.add_widget(self.posbtns[i])
+        self.newgame()
         self.show_current_player()
+
+    def newgame(self):
+        self.galo = Galo()
+        self.game += 1
 
     def play(self, instance):
         for btn_no in range(len(self.posbtns)): 
@@ -51,12 +56,26 @@ class GaloLayout(BoxLayout):
 
     def check_win(self):
         if self.galo.winner != 0:
-            self.ids.bl0.remove_widget(self.lbl0)
-            self.ids.bl0.remove_widget(self.lbl1)
-            self.lblwinner = Label(text=f"Jogador {self.galo.winner} ganhou!")
-            self.ids.bl0.add_widget(self.lblwinner)
             for btn in self.posbtns:
                 btn.disabled = True
+            winpopup = Popup(
+                title=f"Jogador {self.galo.winner} ganhou!",
+                size=(200, 100),
+                size_hint=(None,None),
+                auto_dismiss=False)
+            winpopup_btn = Button(text="Continuar")
+            winpopup_btn.bind(on_release=winpopup.dismiss)
+            winpopup_bl = BoxLayout(orientation="vertical")
+            winpopup_bl.add_widget(Label(text="score"))
+            winpopup_bl.add_widget(winpopup_btn)
+            winpopup.add_widget(winpopup_bl)
+            winpopup.bind(on_dismiss=self.reset)
+            winpopup.open()
             #print(self.ids.lbl0)
+    
+    def reset(self, instance):
+        for btn in self.posbtns:
+                btn.disabled = False
+                btn.text = ""
 
 GaloApp().run()
