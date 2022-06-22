@@ -82,12 +82,14 @@ class GaloLayout(BoxLayout):
             winpopup_bl = BoxLayout(orientation="vertical")
             winpopup_lbl = Label(text=f"Jogador 1: {self.score.count(1)}\nJogador 2: {self.score.count(2)}")
             winpopup_bl.add_widget(winpopup_lbl)
-            if self.MAX_GAMES < self.game:
+            if self.MAX_GAMES <= self.game:
+                winpopup.title = "Fim do jogo"
                 if self.score.count(1) >= self.score.count(2):
                     winner = 1
                 else:
                     winner = 2
-                winpopup_lbl.text += f"\nParabéns jogador {winner}"
+                winpopup_lbl.text = f"\nParabéns jogador {winner}\n" + winpopup_lbl.text
+                
             winpopup_bl.add_widget(winpopup_btn)
             winpopup.content = winpopup_bl
             winpopup.bind(on_dismiss=self.reset)
