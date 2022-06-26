@@ -10,7 +10,37 @@ connector = mysql.connector.connect(
   database="torneios"
 )
 
-cursor = connector.cursor(dictionary=True)
+PRIMARY_KEYS = {
+    "torneios": "id_torneio",
+    "equipa": "id_equipa",
+    "jogo": "id_jogo",
+    "jogador": "id_jogador"
+}
+
+VALID_TABLES = (
+    "equipa",
+    "jogador",
+    "jogo",
+    "membros_equipa",
+    "torneios"
+)
+
+cursor = connector.cursor()
+
+def genfields():
+    cursor.execute("SHOW TABLES")
+    result = cursor.fetchall()
+    fields = []
+    for i in result:
+        cursor.execute(f"SHOW COLUMNS FROM {i[0]}")
+        result2 = cursor.fetchall()
+        for j in result2:
+            fields.append(j[0])
+    return fields
+
+cursor.dictionary = True
+
+VALID_FIELDS = genfields()
 
 app = flask.Flask(__name__)
 
@@ -18,7 +48,6 @@ app = flask.Flask(__name__)
 def gettorneios(id):
     cursor.execute("SELECT * FROM torneios WHERE id_torneio=%s", (id,) )
     result = cursor.fetchall()
-    connector.commit()
     try:
         return flask.jsonify(result[0])
     except IndexError:
@@ -41,11 +70,13 @@ def delete(id):
 def add(table):
 
     try:
+        assert table in VALID_TABLES, "Possible SQL Injection attempt / Wrong Table"
         sqlprops = ""
         sqlvals = []
         sqlpropstemplate = ""
         fst = True
         for prop in flask.request.json:
+            assert prop in VALID_FIELDS, "Possible SQL Injection attempt / Wrong Field"
             if not fst:
                 sqlprops += ", "
                 sqlpropstemplate += ", "
@@ -61,49 +92,43 @@ def add(table):
         connector.commit()
 
     except Exception as ex:
-        print(ex)
-        return flask.Response(f"{str(ex)}\n", status=500)
+        print(f"{type(ex).__name__}: {ex}")
+        return flask.Response(f"Ocorreu um erro\n", status=400)
 
     else:
         return flask.Response("Done\n", status=201)
 
-@app.route('/torneios/<id>', methods=["PUT"])
-def update(id):
+@app.route('/<table>/<id>', methods=["PUT"])
+def update(id, table):
     try:
-        query = """UPDATE torneios
-        SET """
-        updatevals = []
-        try:
-            updatevals.append(flask.request.json["id"])
-            query += "idLocation = %s, "
-        except NameError:
-            pass
-
-        try:
-            updatevals.append(flask.request.json["name"])
-            query += "name = %s, "
-        except NameError:
-            pass
-
-        try:
-            updatevals.append(flask.request.json["unit"])
-            query += "unit = %s, "
-        except NameError:
-            pass
-
-        query = query[0:-2]
-        query += " WHERE id_torneio=%s"
-        updatevals.append(idsensor)
-        result = cursor.execute(query, updatevals)
-
-        addedrows = cursor.rowcount
+        assert table in VALID_TABLES, "Possible SQL Injection attempt / Wrong Table"
+        sqlprops = ""
+        sqlvals = []
+        fst = True
+        for prop in flask.request.json:
+            assert prop in VALID_FIELDS, "Possible SQL Injection attempt / Wrong Field"
+            if not fst:
+                sqlprops += " , "
+            else:
+                fst = False
+            sqlprops += f"{prop} = %s"
+            
+            sqlvals.append(flask.request.json[prop])
+        del fst
+        sqltemplate = f"UPDATE {table} SET {sqlprops} WHERE {PRIMARY_KEYS[table]} = %s"
+        sqlvals.append(id)
+        print(sqltemplate)
+        print(sqlvals)
+        cursor.execute(sqltemplate, sqlvals)
         connector.commit()
 
-        return flask.jsonify({"sucess": True})
+    except Exception as ex:
+        print(f"{type(ex).__name__}: {ex}")
+        print(cursor._executed_list)
+        return flask.Response(f"Ocorreu um erro\n", status=400)
 
-    except Exception as error:
-        print(error)
-        return flask.jsonify({"sucess": False, "error_message": str(error)})
+    else:
+        return flask.Response("Done\n", status=201)
 
 
 @app.route('/torneios', methods=["GET"])
