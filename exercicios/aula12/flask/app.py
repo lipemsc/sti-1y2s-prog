@@ -51,11 +51,11 @@ def gettorneios(id, table):
         assert table in VALID_TABLES, "Possible SQL Injection attempt / Wrong Table"
         cursor.execute(f"SELECT * FROM {table} WHERE id_torneio=%s", (id,) )
         result = cursor.fetchall()
+        retval = result[0]
+        return flask.jsonify(retvalue)
     except Exception as ex:
         print(f"{type(ex).__name__}: {ex}")
         return flask.Response(f"Ocorreu um erro\n", status=400)
-    else:
-        return flask.jsonify(result[0])
 
 @app.route('/<table>/<id>', methods=["DELETE"])
 def delete(id, table):
