@@ -1,8 +1,66 @@
-<TorneiosLayout>
-    ScrollView:
-        do_scroll_x: False
-        do_scroll_y: True
-        id: scroller
-        
-
-        
+<TorneiosLayout> 
+    BoxLayout:
+        orientation:"horizontal"
+        BoxLayout:
+            orientation: "vertical"
+            BoxLayout:
+                size_hint_y: 0.07
+                orientation: "horizontal"
+                Label:
+                    size_hint_x:0.3
+                    text:"ID"
+                TextInput:
+                    text:"b"
+                    multiline: False
+                    size_hint_x: 0.2
+                Label:
+            BoxLayout:
+                orientation: "vertical"
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: 0, 5
+                    size_hint_y: .2
+                    Label:
+                        size_hint_x: .3
+                        text: "Nome"
+                    TextInput:
+                        text: ""
+                        id: tb_nome
+                        multiline: False
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: 0, 5
+                    size_hint_y: .2
+                    Label:
+                        size_hint_x: .3
+                        text: "Local"
+                    TextInput:
+                        text: ""
+                        id: tb_nome
+                        multiline: False
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: 0, 5
+                    size_hint_y: .2
+                    Label:
+                        size_hint_x: .3
+                        text: "Data Inicio"
+                    TextInput:
+                        text: ""
+                        id: tb_nome
+                        multiline: False
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: 0, 5
+                    size_hint_y: .2
+                    Label:
+                        size_hint_x: .3
+                        text: "Data Fim"
+                    TextInput:
+                        text: ""
+                        id: tb_nome
+                        multiline: False
+                Label:
+        BoxLayout:
+            size_hint_x: 0.4
+            TextInput:
