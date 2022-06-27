@@ -7,6 +7,8 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+CREATE DATABASE IF NOT EXISTS `torneios` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `torneios`;
 
 CREATE TABLE `equipa` (
   `id_equipa` int(11) NOT NULL,
@@ -62,6 +64,19 @@ ALTER TABLE `membros_equipa`
 
 ALTER TABLE `torneios`
   ADD PRIMARY KEY (`id_torneio`);
+
+
+ALTER TABLE `equipa`
+  MODIFY `id_equipa` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `jogador`
+  MODIFY `id_jogador` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `jogo`
+  MODIFY `id_jogo` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `torneios`
+  MODIFY `id_torneio` int(11) NOT NULL AUTO_INCREMENT;
 
 
 ALTER TABLE `equipa`
