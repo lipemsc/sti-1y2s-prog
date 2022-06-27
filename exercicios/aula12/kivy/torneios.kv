@@ -11,8 +11,10 @@
                     text:"ID"
                 TextInput:
                     text:"b"
+                    id: tb_id
                     multiline: False
                     size_hint_x: 0.2
+                    on_text_validate: root.update()
                 Label:
             BoxLayout:
                 orientation: "vertical"
@@ -36,7 +38,7 @@
                         text: "Local"
                     TextInput:
                         text: ""
-                        id: tb_nome
+                        id: tb_local
                         multiline: False
                 BoxLayout:
                     orientation: "horizontal"
@@ -47,7 +49,7 @@
                         text: "Data Inicio"
                     TextInput:
                         text: ""
-                        id: tb_nome
+                        id: tb_dt_inicio
                         multiline: False
                 BoxLayout:
                     orientation: "horizontal"
@@ -58,7 +60,7 @@
                         text: "Data Fim"
                     TextInput:
                         text: ""
-                        id: tb_nome
+                        id: tb_dt_fim
                         multiline: False
                 Label:
         BoxLayout:

@@ -13,8 +13,11 @@ import requests, json
 class TorneiosLayout(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.update()
     
     def update(self):
-        torneios = json.loads(requests.get("http://localhost:8080/torneios/").text)
+        req = requests.get(f"http://localhost:8080/torneios/{int(self.ids.tb_id.text)}")
+        if req.status_code == 200:
+            torneios = json.loads(req.text)
+            print(torneios)
+        
         
