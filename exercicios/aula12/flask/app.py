@@ -52,7 +52,7 @@ def gettorneios(id, table):
         cursor.execute(f"SELECT * FROM {table} WHERE id_torneio=%s", (id,) )
         result = cursor.fetchall()
         retval = result[0]
-        return flask.jsonify(retvalue)
+        return flask.jsonify(retval)
     except Exception as ex:
         print(f"{type(ex).__name__}: {ex}")
         return flask.Response(f"Ocorreu um erro\n", status=400)
