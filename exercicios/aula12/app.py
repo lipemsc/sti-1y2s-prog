@@ -25,50 +25,53 @@ VALID_TABLES = (
     "torneios"
 )
 
-cursor = connector.cursor()
+cursor = connector.cursor(dictionary=True)
 
 def genfields():
-    cursor.execute("SHOW TABLES")
-    result = cursor.fetchall()
+    c = connector.cursor()
+    c.execute("SHOW TABLES")
+    result = c.fetchall()
     fields = []
     for i in result:
-        cursor.execute(f"SHOW COLUMNS FROM {i[0]}")
-        result2 = cursor.fetchall()
+        c.execute(f"SHOW COLUMNS FROM {i[0]}")
+        result2 = c.fetchall()
         for j in result2:
             fields.append(j[0])
+    del c
     return fields
 
-cursor.dictionary = True
-
 VALID_FIELDS = genfields()
+#print(VALID_FIELDS)
 
 app = flask.Flask(__name__)
 
-@app.route('/torneios/<id>', methods=["GET"])
-def gettorneios(id):
-    cursor.execute("SELECT * FROM torneios WHERE id_torneio=%s", (id,) )
-    result = cursor.fetchall()
+@app.route('/<table>/<id>', methods=["GET"])
+def gettorneios(id, table):
     try:
-        return flask.jsonify(result[0])
-    except IndexError:
-        flask.abort(404)
-
-@app.route('/torneios/<id>', methods=["DELETE"])
-def delete(id):
-    try:
-        cursor.execute("DELETE FROM torneios WHERE id_torneio=%s", (id,) )
-        deletedrows = cursor.rowcount
-    except Exception:
-        flask.abort(500)
-    if deletedrows > 0:
-        return flask.Response("", status=201)
+        assert table in VALID_TABLES, "Possible SQL Injection attempt / Wrong Table"
+        cursor.execute(f"SELECT * FROM {table} WHERE id_torneio=%s", (id,) )
+        result = cursor.fetchall()
+    except Exception as ex:
+        print(f"{type(ex).__name__}: {ex}")
+        return flask.Response(f"Ocorreu um erro\n", status=400)
     else:
-        flask.abort(400)
+        return flask.jsonify(result[0])
+
+@app.route('/<table>/<id>', methods=["DELETE"])
+def delete(id, table):
+    try:
+        assert table in VALID_TABLES, "Possible SQL Injection attempt / Wrong Table"
+        cursor.execute(f"DELETE FROM {table} WHERE id_torneio=%s", (id,) )
+        deletedrows = cursor.rowcount
+    except Exception as ex:
+        print(f"{type(ex).__name__}: {ex}")
+        return flask.Response(f"Ocorreu um erro\n", status=400)
+    else:
+        return flask.Response("Done\n", status=201)
 
 @app.route('/<table>/', methods=["POST"])
 @app.route('/<table>', methods=["POST"])
 def add(table):
-
     try:
         assert table in VALID_TABLES, "Possible SQL Injection attempt / Wrong Table"
         sqlprops = ""
@@ -124,23 +127,24 @@ def update(id, table):
 
     except Exception as ex:
         print(f"{type(ex).__name__}: {ex}")
-        print(cursor._executed_list)
         return flask.Response(f"Ocorreu um erro\n", status=400)
 
     else:
         return flask.Response("Done\n", status=201)
 
 
-@app.route('/torneios', methods=["GET"])
-@app.route('/torneios/', methods=["GET"])
-def getall():
-    cursor.execute("SELECT * FROM torneios")
-    result = cursor.fetchall()
-    connector.commit()
+@app.route('/<table>', methods=["GET"])
+@app.route('/<table>/', methods=["GET"])
+def getall(table):
     try:
+        assert table in VALID_TABLES, "Possible SQL Injection attempt / Wrong Table"
+        cursor.execute(f"SELECT * FROM {table}")
+        result = cursor.fetchall()
+        connector.commit()
         return flask.jsonify(result)
-    except IndexError:
-        return flask.jsonify({"sucess": False})
+    except Exception as ex:
+        print(f"{type(ex).__name__}: {ex}")
+        return flask.Response(f"Ocorreu um erro\n", status=400)
 
 if __name__ == '__main__':
     app.run(debug=True)
