@@ -6,11 +6,13 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.button import Label
 from kivy.uix.popup import Popup
+from kivy.lang.builder import Builder
 from dateutil import parser
 from datetime import datetime
 
 import requests, json
 
+Builder.load_file("torneio.kv")
 
 class TorneioLayout(BoxLayout):
     
