@@ -10,11 +10,10 @@
                     size_hint_x:0.3
                     text:"ID"
                 TextInput:
-                    text:"b"
                     id: tb_id
                     multiline: False
                     size_hint_x: 0.2
-                    on_text_validate: root.update()
+                    on_text_validate: root.get()
                 Label:
             BoxLayout:
                 orientation: "vertical"
@@ -64,5 +63,18 @@
                         multiline: False
                 Label:
         BoxLayout:
+            orientation: "vertical"
             size_hint_x: 0.4
-            TextInput:
+            padding: 10,10
+            Button:
+                text: "Novo"
+                size_hint_y: .1
+            Button:
+                text: "Apagar"
+                on_release: root.delete()
+                size_hint_y: .1
+            Button:
+                text: "Guardar"
+                on_release: root.update()
+                size_hint_y: .1
+            Label:
