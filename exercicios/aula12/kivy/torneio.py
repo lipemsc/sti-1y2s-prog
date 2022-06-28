@@ -12,7 +12,7 @@ from datetime import datetime
 import requests, json
 
 
-class TorneiosLayout(BoxLayout):
+class TorneioLayout(BoxLayout):
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

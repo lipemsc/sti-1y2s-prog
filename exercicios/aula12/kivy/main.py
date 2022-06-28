@@ -3,11 +3,11 @@ from kivy.config import Config
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 
 
-from torneio import TorneiosLayout
+from torneio import TorneioLayout
 
 class TorneiosApp(App):
     def build(self):
-        return TorneiosLayout()
+        return TorneioLayout()
 
 
 TorneiosApp().run()
