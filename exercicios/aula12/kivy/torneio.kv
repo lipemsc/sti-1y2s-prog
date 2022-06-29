@@ -1,0 +1,80 @@
+<TorneioLayout> 
+    BoxLayout:
+        orientation:"horizontal"
+        BoxLayout:
+            orientation: "vertical"
+            BoxLayout:
+                size_hint_y: 0.07
+                orientation: "horizontal"
+                Label:
+                    size_hint_x:0.3
+                    text:"ID"
+                TextInput:
+                    id: tb_id
+                    multiline: False
+                    size_hint_x: 0.2
+                    on_text_validate: root.get()
+                Label:
+            BoxLayout:
+                orientation: "vertical"
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: 0, 5
+                    size_hint_y: .2
+                    Label:
+                        size_hint_x: .3
+                        text: "Nome"
+                    TextInput:
+                        text: ""
+                        id: tb_nome
+                        multiline: False
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: 0, 5
+                    size_hint_y: .2
+                    Label:
+                        size_hint_x: .3
+                        text: "Local"
+                    TextInput:
+                        text: ""
+                        id: tb_local
+                        multiline: False
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: 0, 5
+                    size_hint_y: .2
+                    Label:
+                        size_hint_x: .3
+                        text: "Data Inicio"
+                    TextInput:
+                        text: ""
+                        id: tb_dt_inicio
+                        multiline: False
+                BoxLayout:
+                    orientation: "horizontal"
+                    padding: 0, 5
+                    size_hint_y: .2
+                    Label:
+                        size_hint_x: .3
+                        text: "Data Fim"
+                    TextInput:
+                        text: ""
+                        id: tb_dt_fim
+                        multiline: False
+                Label:
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_x: 0.4
+            padding: 10,10
+            Button:
+                text: "Novo"
+                size_hint_y: .1
+            Button:
+                text: "Apagar"
+                on_release: root.delete()
+                size_hint_y: .1
+            Button:
+                text: "Guardar"
+                on_release: root.update()
+                size_hint_y: .1
+            Label:
