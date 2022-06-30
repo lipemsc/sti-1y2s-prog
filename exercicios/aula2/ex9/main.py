@@ -21,6 +21,9 @@ while True:
     if op == "aco":
         inp = inputs.add_color()
         colors.append(color.Color(inp[0], inp[1], inp[2], inp[3]))
+    if op == "eco":
+        inp = inputs.add_color()
+        colors.append(color.Color(inp[0], inp[1], inp[2], inp[3]))
     elif op == "lco":
         for i in range(len(colors)):
             print(f"{i+1}: {colors[i]}")
@@ -28,6 +31,9 @@ while True:
         del colors[int(input("Color number to delete: "))-1]
 
     elif op == "ap":
+        inp = inputs.add_person()
+        people.append(person.Person(inp[0], inp[1], inp[2], inp[3], inp[4]))
+    elif op == "ep":
         inp = inputs.add_person()
         people.append(person.Person(inp[0], inp[1], inp[2], inp[3], inp[4]))
     elif op == "lp":
@@ -39,6 +45,9 @@ while True:
     elif op == "ae":
         inp = inputs.add_engine()
         engines.append(engine.Engine(inp[0], inp[1], inp[2], inp[3], inp[4], inp[5], inp[6], inp[7]))
+    elif op == "ee":
+        inp = inputs.add_engine()
+        engines.append(engine.Engine(inp[0], inp[1], inp[2], inp[3], inp[4], inp[5], inp[6], inp[7]))
     elif op == "le":
         for i in range(len(engines)):
             print(f"{i+1}: {engines[i]}")
@@ -47,6 +56,9 @@ while True:
     
     elif op == "ac":
         inp = inputs.add_car()
+        cars.append(car.Car(inp[0], inp[1], inp[2],  inp[3], people[inp[4]-1], colors[inp[5]-1], engines[inp[6]-1]))
+    elif op == "ec":
+        inp = inputs.add_car(edit=True)
         cars.append(car.Car(inp[0], inp[1], inp[2],  inp[3], people[inp[4]-1], colors[inp[5]-1], engines[inp[6]-1]))
     elif op == "lc":
         for i in range(len(cars)):
