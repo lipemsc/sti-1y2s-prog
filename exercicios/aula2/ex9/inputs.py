@@ -9,7 +9,15 @@ def add_car(edit=False):
     owner = int(input(f"Owner ID{editstring}: "))
     color = int(input(f"Color ID{editstring}: "))
     engine = int(input(f"Engine ID{editstring}: "))
-    return (brand, model, consumption, kms, owner, color, engine)
+    return {
+        "brand": brand,
+        "model": model,
+        "consumption": consumption,
+        "kms": kms,
+        "owner": owner,
+        "color": color,
+        "engine": engine
+    }
 
 def add_color(edit=False):
     editstring = ""
@@ -19,7 +27,12 @@ def add_color(edit=False):
     r = input(f"R{editstring}: ")
     g = input(f"G{editstring}: ")
     b = input(f"B{editstring}: ")
-    return (name, r, g, b)
+    return {
+        "name": name,
+        "r": r,
+        "g": g,
+        "b": b
+    }
 
 def add_person(edit=False):
     editstring = ""
@@ -30,7 +43,13 @@ def add_person(edit=False):
     address = input(f"Address{editstring}: ")
     cc = input(f"CC{editstring}: ")
     phonenumber = input(f"Phone Number{editstring}: ")
-    return (forename, surname, address, cc, phonenumber)
+    return {
+        "forename": forename,
+        "surname": surname,
+        "address": address,
+        "cc": cc,
+        "phonenumber": phonenumber
+    }
 
 def add_engine(edit=False):
     editstring = ""
@@ -44,4 +63,13 @@ def add_engine(edit=False):
     startingsystem = input(f"Starting System{editstring}: ")
     dryweight = input(f"Dry Weight{editstring}: ")
     manufacturer = input(f"Manufacturer{editstring}: ")
-    return (fuel, horsepower, torque, displacement, numbercilinders, startingsystem, dryweight, manufacturer)
+    return {
+        "fuel": fuel,
+        "horsepower": horsepower,
+        "torque": torque,
+        "displacement": displacement,
+        "numbercilinders": numbercilinders,
+        "startingsystem": startingsystem,
+        "dryweight": dryweight,
+        "manufacturer": manufacturer
+    }

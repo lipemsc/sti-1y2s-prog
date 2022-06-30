@@ -20,7 +20,12 @@ while True:
     #    cars.append(car.Car(inputs.add_carro())) 
     if op == "aco":
         inp = inputs.add_color()
-        colors.append(color.Color(inp[0], inp[1], inp[2], inp[3]))
+        colors.append(color.Color(
+            inp["name"],
+            inp["r"],
+            inp["g"],
+            inp["b"]
+        ))
     if op == "eco":
         inp = inputs.add_color()
         colors.append(color.Color(inp[0], inp[1], inp[2], inp[3]))
@@ -32,7 +37,13 @@ while True:
 
     elif op == "ap":
         inp = inputs.add_person()
-        people.append(person.Person(inp[0], inp[1], inp[2], inp[3], inp[4]))
+        people.append(person.Person(
+            inp["forename"],
+            inp["surname"],
+            inp["address"],
+            inp["cc"],
+            inp["phonenumber"]
+        ))
     elif op == "ep":
         inp = inputs.add_person()
         people.append(person.Person(inp[0], inp[1], inp[2], inp[3], inp[4]))
@@ -44,7 +55,16 @@ while True:
     
     elif op == "ae":
         inp = inputs.add_engine()
-        engines.append(engine.Engine(inp[0], inp[1], inp[2], inp[3], inp[4], inp[5], inp[6], inp[7]))
+        engines.append(engine.Engine(
+            inp["fuel"],
+            inp["horsepower"],
+            inp["torque"],
+            inp["displacement"],
+            inp["numbercilinders"],
+            inp["startingsystem"],
+            inp["dryweight"],
+            inp["manufacturer"]
+        ))
     elif op == "ee":
         inp = inputs.add_engine()
         engines.append(engine.Engine(inp[0], inp[1], inp[2], inp[3], inp[4], inp[5], inp[6], inp[7]))
@@ -56,7 +76,15 @@ while True:
     
     elif op == "ac":
         inp = inputs.add_car()
-        cars.append(car.Car(inp[0], inp[1], inp[2],  inp[3], people[inp[4]-1], colors[inp[5]-1], engines[inp[6]-1]))
+        cars.append(car.Car(
+            inp["brand"],
+            inp["model"],
+            inp["consumption"],
+            inp["kms"],
+            people[inp["owner"]-1],
+            colors[inp["color"]-1],
+            engines[inp["engine"]-1]
+        ))
     elif op == "ec":
         inp = inputs.add_car(edit=True)
         cars.append(car.Car(inp[0], inp[1], inp[2],  inp[3], people[inp[4]-1], colors[inp[5]-1], engines[inp[6]-1]))
