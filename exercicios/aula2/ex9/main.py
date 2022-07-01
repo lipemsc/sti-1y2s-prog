@@ -26,9 +26,17 @@ while True:
             inp["g"],
             inp["b"]
         ))
-    if op == "eco":
-        inp = inputs.add_color()
-        colors.append(color.Color(inp[0], inp[1], inp[2], inp[3]))
+    elif op == "eco":
+        n = int(input("Color number to edit: "))-1
+        inp = inputs.add_color(edit=True)
+        if inp["r"] != "":
+            colors[n].r = inp["r"]
+        if inp["g"] != "":
+            colors[n].g = inp["g"]
+        if inp["b"] != "":
+            colors[n].b = inp["b"]
+        if inp["name"] != "":
+            colors[n].name = inp["name"]
     elif op == "lco":
         for i in range(len(colors)):
             print(f"{i+1}: {colors[i]}")
@@ -45,8 +53,18 @@ while True:
             inp["phonenumber"]
         ))
     elif op == "ep":
-        inp = inputs.add_person()
-        people.append(person.Person(inp[0], inp[1], inp[2], inp[3], inp[4]))
+        n = int(input("Color number to edit: "))-1
+        inp = inputs.add_person(edit=True)
+        if inp["forename"] != "":
+            people[n].forename = inp["forename"]
+        if inp["surname"] != "":
+            people[n].surname = inp["surname"]
+        if inp["address"] != "":
+            people[n].address = inp["address"]
+        if inp["cc"] != "":
+            people[n].cc = inp["cc"]
+        if inp["phonenumber"] != "":
+            people[n].phonenumber = inp["phonenumber"]
     elif op == "lp":
         for i in range(len(people)):
             print(f"{i+1}: {people[i]}")
@@ -66,8 +84,24 @@ while True:
             inp["manufacturer"]
         ))
     elif op == "ee":
+        n = int(input("Color number to edit: "))-1
         inp = inputs.add_engine()
-        engines.append(engine.Engine(inp[0], inp[1], inp[2], inp[3], inp[4], inp[5], inp[6], inp[7]))
+        if inp["fuel"] != "":
+            engines[n].fuel = inp["fuel"]
+        if inp["horsepower"] != "":
+            engines[n].horsepower = inp["horsepower"]
+        if inp["torque"] != "":
+            engines[n].torque = inp["torque"]
+        if inp["displacement"] != "":
+            engines[n].displacement = inp["displacement"]
+        if inp["numbercilinders"] != "":
+            engines[n].numbercilinders = inp["numbercilinders"]
+        if inp["startingsystem"] != "":
+            engines[n].startingsystem = inp["startingsystem"]
+        if inp["dryweight"] != "":
+            engines[n].dryweight = inp["dryweight"]
+        if inp["manufacturer"] != "":
+            engines[n].manufacturer = inp["manufacturer"]
     elif op == "le":
         for i in range(len(engines)):
             print(f"{i+1}: {engines[i]}")
@@ -75,6 +109,7 @@ while True:
         del engines[int(input("Engine number to delete: "))-1]
     
     elif op == "ac":
+        n = int(input("Color number to edit: "))-1
         inp = inputs.add_car()
         cars.append(car.Car(
             inp["brand"],
@@ -87,9 +122,24 @@ while True:
         ))
     elif op == "ec":
         inp = inputs.add_car(edit=True)
-        cars.append(car.Car(inp[0], inp[1], inp[2],  inp[3], people[inp[4]-1], colors[inp[5]-1], engines[inp[6]-1]))
+        if inp["brand"] != "":
+            cars[n].brand = inp["fuel"]
+        if inp["model"] != "":
+            cars[n].model = inp["horsepower"]
+        if inp["consumption"] != "":
+            cars[n].consumption = inp["consumption"]
+        if inp["kms"] != "":
+            cars[n].kms = inp["kms"]
+        if inp["owner"] != "":
+            cars[n].owner = people[inp["owner"]-1]
+        if inp["color"] != "":
+            cars[n].color = colors[inp["color"]-1]
+        if inp["engine"] != "":
+            cars[n].engine = engines[inp["engine"]-1]
     elif op == "lc":
         for i in range(len(cars)):
             print(f"{i+1}: {cars[i]}")
     elif op == "dc":
         del cars[int(input("Engine number to delete: "))-1]
+    else:
+        print(f"{op}: command not found")

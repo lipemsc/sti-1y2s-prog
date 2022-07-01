@@ -1,20 +1,20 @@
 class Color:
-    def __init__(self, colorname, r, g, b):
-        self._colorname = colorname
+    def __init__(self, name, r, g, b):
+        self._name = name
         self._r = r
         self._g = g
         self._b = b
 
     def __repr__(self):
-        return f"Color {self.colorname}  R:{self.r} G:{self.g} B:{self.b}"
+        return f"Color {self.name}  R:{self.r} G:{self.g} B:{self.b}"
 
     @property
-    def colorname(self):
-        return self._colorname
+    def name(self):
+        return self._name
     
-    @colorname.setter
-    def r(self, colorname):
-        self._colorname = colorname
+    @name.setter
+    def r(self, name):
+        self._name = name
 
     
     @property
