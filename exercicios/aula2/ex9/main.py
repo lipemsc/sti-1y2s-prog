@@ -109,7 +109,6 @@ while True:
         del engines[int(input("Engine number to delete: "))-1]
     
     elif op == "ac":
-        n = int(input("Color number to edit: "))-1
         inp = inputs.add_car()
         cars.append(car.Car(
             inp["brand"],
