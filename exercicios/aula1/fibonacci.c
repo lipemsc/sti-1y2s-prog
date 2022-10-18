@@ -1,3 +1,6 @@
+//This was an experiment. Not actually required by the teacher. May not work at
+//all, specially with higher values.
+
 #include <stdio.h>
 
 int main() {
